@@ -180,6 +180,8 @@ contract RockPaperScissors {
         chip.transferFrom(_player, address(game), _wager);
         chip.transferFrom(msg.sender, address(game), _wager);
         players[msg.sender].challenged = false;
+        players[msg.sender].ready = false;
+        players[_player].ready = false;
         players[_player].wager = 0;
     }
     
