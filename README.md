@@ -4,6 +4,9 @@
 - 💞️ I’m looking to collaborate on smart contracts for company use.
 - 
 - Try my dapps at my website:  mangosugar.org
+- mangosugar.org/SharedWallet
+- mangosugar.org/VaxProtocol
+- mangosugar.org/supplychain
 - 
 - 📫 How to reach me:
 
