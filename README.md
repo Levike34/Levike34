@@ -5,7 +5,8 @@
 - 
 - Try my dapps at my website:  mangosugar.org
 - 
-- Flagship Dapp:  mangosugar.org/MangoStake
+- Flagship Dapp:  ******mangosugar.org/MangoStake******
+- 
 - mangosugar.org/SharedWallet
 - mangosugar.org/VaxProtocol
 - mangosugar.org/supplychain
