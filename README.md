@@ -1,9 +1,11 @@
 - 👋 Hi, I’m Levi, I am interested in building smart contracts for real world applications.
 - 👀 I’m interested in Solidity and vaccination-based applications utilizing blockchain technology.
 - 🌱 I’m currently learning React and Solidity with Web3.js.
-- 💞️ I’m looking to collaborate on smart contracts for company use.
+- 💞️ I’m looking to collaborate on smart contracts and build the Decentralized Universe!
 - 
 - Try my dapps at my website:  mangosugar.org
+- 
+- Flagship Dapp:  mangosugar.org/MangoStake
 - mangosugar.org/SharedWallet
 - mangosugar.org/VaxProtocol
 - mangosugar.org/supplychain
