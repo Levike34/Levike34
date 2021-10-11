@@ -1,0 +1,227 @@
+pragma solidity ^0.8.0;
+
+import "./Mango.sol";
+import "./MangoJuice.sol";
+ 
+contract RockPaperScissors {
+    
+    IERC20 public mJus;
+   
+    
+    //alerts players when a challenge is called.
+    event Challenge(address _challenger, address _challengee, uint _wager);
+    
+    
+    constructor(address _token){
+        mJus = IERC20(_token);
+    }
+    
+    modifier referee {
+        require(moves[msg.sender].turn == 0, "You already moved.");
+        _;
+    }
+    
+    function getMyGame() public view returns(uint) {
+        return moves[msg.sender].id;
+    }
+    
+    function getPrize(uint _id) public view returns(uint) {
+        return games[_id].prize;
+    }
+    
+    function getMjus(address _person) public view returns(uint) {
+        return mJus.balanceOf(_person);
+    }
+    
+    function getWillingBalance(address _person) public view returns(uint) {
+        return players[_person].willingBalance;
+    }
+    
+    function setWillingBalance(uint _amount) public {
+        require(_amount <= mJus.balanceOf(msg.sender), "You need more mJus.");
+        players[msg.sender].willingBalance = _amount;
+    }
+    
+    struct Player {
+        bool ready;
+        bool challenged;
+        uint willingBalance;
+        uint wager;
+        uint challangedWager;
+    }
+    
+
+    
+    mapping(address => Player) public players;
+    
+    
+    address [] gameQueue;
+  
+    
+    event GameStarted(address _challenger, address _challengee, uint _game);
+    
+    
+    //Adds player addresses to a public game queue, where they can be challenged by others.
+    //the game queue acts as proof of "MangoJuice" ownership, and readiness to play.
+    function readyUp(uint _willingBalance) public {
+        require(mJus.balanceOf(msg.sender) >= _willingBalance, "Not enough MangoJuice.");
+        require(players[msg.sender].ready == false, "You are in the game queue."); 
+        players[msg.sender].ready = true;
+        players[msg.sender].willingBalance = _willingBalance;
+        gameQueue.push(msg.sender);
+    }
+    
+    function getGameQueue() public view returns(address [] memory) {
+        return gameQueue;
+    }
+    
+
+    
+    //Players accept challenge based on address and wager. Acceptance creates the contact "game",
+    //and sends the players' chips to that address after both players have agreed.  Game's address
+    //is emitted as GameStarted.
+    
+    function createGame(address _p2, uint _wager) public { 
+        require( !moves[msg.sender].inGame || !moves[_p2].inGame, "player is already in a match.");
+        require(msg.sender != _p2, "You can't arrange matches between you and yourself.");
+        require(players[msg.sender].willingBalance >= _wager && players[_p2].willingBalance >= _wager);
+        require(mJus.balanceOf(msg.sender) >= _wager && mJus.balanceOf(_p2) >= _wager, 'One player needs more MangoJuice');
+        prize = _wager * 2;
+        
+        //Creates a new Game struct with unique ID.
+        games.push(Game(gameID, msg.sender, _p2, prize, 0, false));
+        moves[msg.sender].inGame = true;
+        moves[_p2].inGame = true;
+        moves[msg.sender].id = gameID;
+        moves[_p2].id = gameID;
+        mJus.transferFrom(_p2, address(this), _wager);
+        mJus.transferFrom(msg.sender, address(this), _wager);
+        emit Challenge(msg.sender, _p2, _wager);
+        emit GameStarted(msg.sender, _p2, gameID);
+        gameID++;
+    }
+    
+    
+    uint public gameID;
+    uint prize;
+    
+    Game[] public games;
+    
+    struct Move {
+        uint id;
+        uint turn;
+        uint choice;
+        bool winner;
+        bool inGame;
+    }
+    
+    mapping(address => Move) public moves;
+    
+    struct Game {
+        uint id;
+        address player1;
+        address player2;
+        uint prize;
+        uint turnCount;
+        bool tie;
+    }
+    
+    function rock() public referee {
+        uint _id = moves[msg.sender].id;
+        require(msg.sender == games[_id].player1 || msg.sender == games[_id].player2, "You are not in this match.");
+        moves[msg.sender].choice = 0;
+        moves[msg.sender].turn++;
+        games[_id].turnCount++;
+    }
+    
+    function paper() public referee {
+        uint _id = moves[msg.sender].id;
+        require(msg.sender == games[_id].player1 || msg.sender == games[_id].player2, "You are not in this match.");
+        moves[msg.sender].choice = 1;
+        moves[msg.sender].turn++;
+        games[_id].turnCount++;
+    }
+    
+    function scissors() public referee {
+        uint _id = moves[msg.sender].id;
+        require(msg.sender == games[_id].player1 || msg.sender == games[_id].player2, "You are not in this match.");
+        moves[msg.sender].choice = 2;
+        moves[msg.sender].turn++;
+        games[_id].turnCount++;
+    }
+    
+    
+    //Determines the winner, changes the winning player's bool "winner" to true in Struct Move.
+    function getWinner(uint _id) public returns(bool) {
+        require(games[_id].turnCount == 2, "No winner yet.");
+        address player1 = games[_id].player1;
+        address player2 = games[_id].player2;
+        if(moves[player1].choice == 0 && moves[player2].choice == 2){
+            return moves[player1].winner = true;
+        } else if(moves[player1].choice == 2 && moves[player2].choice == 1){
+            return moves[player1].winner = true;
+        } else if(moves[player1].choice == 1 && moves[player2].choice == 0){
+            return moves[player1].winner = true;
+        } else if(moves[player2].choice == 0 && moves[player1].choice == 2){
+            return moves[player2].winner = true;
+        } else if(moves[player2].choice == 2 && moves[player1].choice == 1){
+            return moves[player2].winner = true;
+        } else if(moves[player2].choice == 1 && moves[player1].choice == 0){
+            return moves[player2].winner = true;
+        } else{
+            //Returns tie if the players have the same move.
+            return games[gameID].tie = true;
+        }
+        
+    }
+
+        
+    //transfers the winnings "prize" to the winner, and resets players' status for the next game.
+    function chipTransfer(uint _id) public payable {
+        require(moves[msg.sender].winner == true, "You lost.");
+        uint amount = games[_id].prize;
+        mJus.transfer(msg.sender, amount);
+        moves[games[_id].player1].inGame = false;
+        moves[games[_id].player1].id = 0;
+        moves[games[_id].player1].turn = 0;
+        moves[games[_id].player1].choice = 0;
+        moves[games[_id].player1].winner = false;
+        moves[games[_id].player2].inGame = false;
+        moves[games[_id].player2].id = 0;
+        moves[games[_id].player2].turn = 0;
+        moves[games[_id].player2].choice = 0;
+        moves[games[_id].player2].winner = false;
+        
+        
+        
+        
+        
+        moves[games[_id].player2].inGame = false;
+    }
+    
+    //If the result is a draw, players get their wagers back and resets players' status for the next game.
+    function getFundsBack(uint _id) public {
+        require(games[_id].tie == true, "There was a winner.");
+        address player1 = games[_id].player1;
+        address player2 = games[_id].player2;
+        uint amount = games[_id].prize;
+        mJus.transfer(player1, amount / 2);
+        mJus.transfer(player2, amount / 2);
+        moves[player1].inGame = false;
+        moves[player1].id = 0;
+        moves[player1].turn = 0;
+        moves[player1].choice = 0;
+        moves[player1].winner = false;
+        moves[player2].inGame = false;
+        moves[player2].id = 0;
+        moves[player2].turn = 0;
+        moves[player2].choice = 0;
+        moves[player2].winner = false;
+    }
+    
+        
+    
+    
+    
+    receive() external payable {}
+}
