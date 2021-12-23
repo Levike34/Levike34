@@ -1,21 +1,28 @@
-- 👋 Hi, I’m Levi, I am interested in building smart contracts for real world applications.
-- 👀 I’m interested in Solidity and vaccination-based applications utilizing blockchain technology.
-- 🌱 I’m currently learning React and Solidity with Web3.js.
-- 💞️ I’m looking to collaborate on smart contracts and build the Decentralized Universe!
-- 
-- Try my dapps at my website:  mangosugar.org
-- 
-- Flagship Dapp:  ******mangosugar.org/MangoStake******
-- 
-- mangosugar.org/SharedWallet
-- mangosugar.org/VaxProtocol
-- mangosugar.org/supplychain
+-Hello, I am Levi Meadows and I am a Blockchain developer. 
+I have been working with Solidity to build real-world applications
+in DeFi and NFTs.  I build all of my applications from start to finish (Full-Stack) 
+using the Solidity + Truffle + Web3 + React framework.
+
+I have built:
+
+Decentralized Exchanges (DEX):
+clearchainlife.com/clearswap
+poseidos.net/tokenswap
+
+ICO with Vesting: clearchainlife.com/purchase
+
+Staking + Yield Farming: poseidos.net/underworld
+
+ArchAngel Staking front-end (Web3) - Gabriel staking.
+PROFIT token staking.
+
+NFT Market Place Airdrop: poseidos.net/gumdrop
+
+I am confident in my skills in Solidity.  With Solidity being a Turing-complete language, I 
+am sure that I can build any blockchain application I can imagine.
 - 
 - 📫 How to reach me:
 
 email: L_meadows34@hotmail.com
 
-<!---
-Levike34/Levike34 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+
