@@ -18,16 +18,8 @@ contract RockPaperScissors {
 
     
     mapping(address => Player) public players;
-    
-    
-    address [] gameQueue;
   
-    
     event GameResult(string result);
-
-    //Players accept challenge based on address and wager. Acceptance creates the contract "game",
-    //and sends the players' chips to that address after both players have agreed.  Game's address
-    //is emitted as GameStarted.
 
     uint public gameID;
     Game[] public games;
