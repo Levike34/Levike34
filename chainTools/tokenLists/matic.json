@@ -1,0 +1,100 @@
+{
+    "ethereum": {
+      "address": [
+        {
+          "balances": [
+            {
+              "currency": {
+                "symbol": "MCPC",
+                "address": "0x726e1b4841968c0c3eebeef880e60875b745b3c0"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "MNEP",
+                "address": "0x0b91b07beb67333225a5ba0259d55aee10e3a578"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "LELX.io",
+                "address": "0x22e51bae3f545255e115090202a23c7ede0b00b9"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "AeFX.io",
+                "address": "0x2744861accb5bd435017c1cfee789b6ebab42082"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "EMON",
+                "address": "0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "MNEP",
+                "address": "0xecdff6fd2f184f8b8987682a10aa6890ca74c5a8"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "DxDex.io",
+                "address": "0x81067076dcb7d3168ccf7036117b9d72051205e2"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "BLOK",
+                "address": "0x229b1b6c23ff8953d663c4cbb519717e323a0a84"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "CHAMP",
+                "address": "0x8f9e8e833a69aa467e42c46cca640da84dd4585f"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "BuyItUp",
+                "address": "0x647a337036b448bed2ff75f27789a73f6ff56f3f"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "MegaDoge",
+                "address": "0xcbf4ab00b6aa19b4d5d29c7c3508b393a1c01fe3"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "SSX",
+                "address": "0x9e2d266d6c90f6c0d80a88159b15958f7135b8af"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "JustForFun",
+                "address": "0x5b56a425f8b45d82ebb57dca4f02528409ae763b"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "MATIC",
+                "address": "-"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "Zepe.io",
+                "address": "0xe4fb1bb8423417a460286b0ed44b64e104c5fae5"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }

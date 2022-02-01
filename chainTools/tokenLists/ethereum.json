@@ -1,0 +1,226 @@
+{
+    "ethereum": {
+      "address": [
+        {
+          "balances": [
+            {
+              "currency": {
+                "symbol": "NFY",
+                "address": "0x1cbb83ebcd552d5ebf8131ef8c9cd9d9bab342bc"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "RIGEL",
+                "address": "0x4ca0654f4fc1025cf1a17b7459c20ac0479522ad"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "NPXS",
+                "address": "0xa15c7ebe1f07caf6bff097d8a589fb8ac49ae5b3"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "Fomo2Moon.io (Win ETH Fast)",
+                "address": "0x3109da1ae5c609196e8b136a675114a7018e0cbf"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "MATIC",
+                "address": "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "FUS",
+                "address": "0xa14839c9837657efcde754ebeaf5cbecdd801b2a"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "CBIT",
+                "address": "0x5f5d0767fb8ba2c2793bf7957993a63b5e67d92b"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "ENAU",
+                "address": "0x26eb39228eb4bb98c84ad821bb51464121b2276d"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "P3X",
+                "address": "0x058a144951e062fc14f310057d2fd9ef0cf5095b"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "DPI",
+                "address": "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "GASG",
+                "address": "0xc58467b855401ef3ff8fda9216f236e29f0d6277"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "POLY",
+                "address": "0x9992ec3cf6a55b00978cddf2b27bc6882d88d1ec"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "KICK",
+                "address": "0xc12d1c73ee7dc3615ba4e37e4abfdbddfa38907e"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "fck.com FCK",
+                "address": "0x9ce40fb807eaf4ab3712c7d8797ee8107b36c46e"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "ZCO",
+                "address": "0x2008e3057bd734e10ad13c9eae45ff132abc1722"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "F2M",
+                "address": "0x8888887c5ede327afbeb15019598aaa3b4fae759"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "QUICK",
+                "address": "0x6c28aef8977c9b773996d0e8376d2ee379446f2f"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "FMW",
+                "address": "0xdd850d1d845a444a13e9516317a0a57075d9cf8e"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "EMONA",
+                "address": "0x5d00d312e171be5342067c09bae883f9bcb2003b"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "USDC",
+                "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "geteth.io",
+                "address": "0xd32289af05a7b10ff545e094d0ef5805dd6112fb"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "findtherabbit.me",
+                "address": "0x2ff2b86c156583b1135c584fd940a1996fa4230b"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "tBONE",
+                "address": "0xf7a0383750fef5abace57cc4c9ff98e3790202b3"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "MONGOOSE",
+                "address": "0xa1817b6d8d890f3943b61648992730373b71f156"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "NEXO",
+                "address": "0xb62132e35a6c13ee1ee0f84dc5d40bad8d815206"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "fth.fck.com",
+                "address": "0x0d91c6eb1ca239a102fdb27941f235a80642e51f"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "blockwell.ai KYC Casper Token",
+                "address": "0x212d95fccdf0366343350f486bda1ceafc0c2d63"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "EWTB",
+                "address": "0x178c820f862b14f316509ec36b13123da19a6054"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "ETH",
+                "address": "-"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "WTT",
+                "address": "0x84119cb33e8f590d75c2d6ea4e6b0741a7494eda"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "FCK.com Lowest house edge",
+                "address": "0x89e642e9bdb2c3d2fa03b600d8922cfc0800fddb"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "⚗️",
+                "address": "0x88acdd2a6425c3faae4bc9650fd7e27e0bebb7ab"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "HOT",
+                "address": "0x6c6ee5e31d828de241282b9606c8e98ea48526e2"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "CBTB",
+                "address": "0xfd79c2aa42ab4bfbd7c03c1e6866491172917b32"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "BONE",
+                "address": "0x9813037ee2218799597d83d4a5b6f3b6778218d9"
+              }
+            },
+            {
+              "currency": {
+                "symbol": "SUSHI",
+                "address": "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
