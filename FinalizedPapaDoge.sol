@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity 0.8.0;
 
-import "./PapaDogeDAO.sol";
+import "./FinalizedPapaDogeDao.sol";
 /**
  * SAFEMATH LIBRARY
  */
@@ -238,8 +238,7 @@ interface IDividendDistributor {
 contract DividendDistributor is IDividendDistributor {
     using SafeMath for uint256;
 
-    address _token;
-    //IBEP20 public refToken = papadogeDAO.refToken1; 
+    address public _token;
 
     struct Share {
         uint256 amount;
@@ -248,13 +247,13 @@ contract DividendDistributor is IDividendDistributor {
     }
 
 
-    address WBNB = 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd; //0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c
-    IDEXRouter router;
-    PapaDogeDAO papadogeDAO;
+    address public constant WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c; 
+    IDEXRouter public router;
+    PapaDogeDAO public papadogeDAO;
 
-    address[] shareholders;
-    mapping (address => uint256) shareholderIndexes;
-    mapping (address => uint256) shareholderClaims;
+    address[] public shareholders;
+    mapping (address => uint256) public shareholderIndexes;
+    mapping (address => uint256) public shareholderClaims;
 
     mapping (address => Share) public shares;
 
@@ -262,14 +261,14 @@ contract DividendDistributor is IDividendDistributor {
     uint256 public totalDividends;
     uint256 public totalDistributed;
     uint256 public dividendsPerShare;
-    uint256 public dividendsPerShareAccuracyFactor = 10 ** 36;
+    uint256 constant public dividendsPerShareAccuracyFactor = 10 ** 36;
 
-    uint256 public minPeriod = 60 minutes;
+    uint256 public minPeriod = 480 minutes; //8 hours
     uint256 public minDistribution = 1 * (10 ** 18);
 
-    uint256 currentIndex;
+    uint256 public currentIndex;
 
-    bool initialized;
+    bool public initialized;
     modifier initialization() {
         require(!initialized);
         _;
@@ -283,8 +282,7 @@ contract DividendDistributor is IDividendDistributor {
     constructor (address _router, address _papadogeDAO) {
         router = _router != address(0)
         ? IDEXRouter(_router)
-        : IDEXRouter(0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3); //0x10ED43C718714eb63d5aA57B78B54704E256024E
-        //refToken = _refToken;
+        : IDEXRouter(0x10ED43C718714eb63d5aA57B78B54704E256024E); 
         papadogeDAO = PapaDogeDAO(_papadogeDAO); 
         _token = msg.sender;
     }
@@ -314,7 +312,7 @@ contract DividendDistributor is IDividendDistributor {
 
     function deposit() external payable override onlyToken {
         IBEP20 refToken1 = papadogeDAO.getTok1();
-        uint256 balanceBefore = refToken1.balanceOf(address(this)); //Main
+        uint256 balanceBefore = refToken1.balanceOf(address(this)); 
 
         address[] memory path = new address[](2);
         path[0] = WBNB;
@@ -412,8 +410,7 @@ contract DividendDistributor is IDividendDistributor {
 contract DividendDistributor2 is IDividendDistributor {
     using SafeMath for uint256;
 
-    address _token;
-    //IBEP20 public refToken;
+    address public _token;
 
     struct Share {
         uint256 amount;
@@ -421,13 +418,13 @@ contract DividendDistributor2 is IDividendDistributor {
         uint256 totalRealised;
     }
 
-    address WBNB = 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd; //0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c
-    IDEXRouter router;
-    PapaDogeDAO papadogeDAO;
+    address public constant WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+    IDEXRouter public router;
+    PapaDogeDAO public papadogeDAO;
 
-    address[] shareholders;
-    mapping (address => uint256) shareholderIndexes;
-    mapping (address => uint256) shareholderClaims;
+    address[] public shareholders;
+    mapping (address => uint256) public shareholderIndexes;
+    mapping (address => uint256) public shareholderClaims;
 
     mapping (address => Share) public shares;
 
@@ -435,14 +432,14 @@ contract DividendDistributor2 is IDividendDistributor {
     uint256 public totalDividends;
     uint256 public totalDistributed;
     uint256 public dividendsPerShare;
-    uint256 public dividendsPerShareAccuracyFactor = 10 ** 36;
+    uint256 constant public  dividendsPerShareAccuracyFactor = 10 ** 36;
 
-    uint256 public minPeriod = 60 minutes;
+    uint256 public minPeriod = 480 minutes; //8 hours
     uint256 public minDistribution = 1 * (10 ** 18);
 
-    uint256 currentIndex;
+    uint256 public currentIndex;
 
-    bool initialized;
+    bool public initialized;
     modifier initialization() {
         require(!initialized);
         _;
@@ -456,7 +453,7 @@ contract DividendDistributor2 is IDividendDistributor {
     constructor (address _router, address _papadogeDAO) {
         router = _router != address(0)
         ? IDEXRouter(_router)
-        : IDEXRouter(0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3); //0x10ED43C718714eb63d5aA57B78B54704E256024E
+        : IDEXRouter(0x10ED43C718714eb63d5aA57B78B54704E256024E); 
         papadogeDAO = PapaDogeDAO(_papadogeDAO); 
         _token = msg.sender;
     }
@@ -484,7 +481,7 @@ contract DividendDistributor2 is IDividendDistributor {
 
     function deposit() external payable override onlyToken {
         IBEP20 refToken2 = papadogeDAO.getTok2();
-        uint256 balanceBefore = refToken2.balanceOf(address(this)); //Main
+        uint256 balanceBefore = refToken2.balanceOf(address(this)); 
 
         address[] memory path = new address[](2);
         path[0] = WBNB;
@@ -586,22 +583,21 @@ contract DividendDistributor2 is IDividendDistributor {
 contract DividendDistributor3 is IDividendDistributor {
     using SafeMath for uint256;
 
-    address _token;
-    //IBEP20 public refToken;
+    address public _token;
 
     struct Share {
-        uint256 amount;
+        uint256 publicamount;
         uint256 totalExcluded;
         uint256 totalRealised;
     }
 
-    address WBNB = 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd; //0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c MAIN
-    IDEXRouter router;
-    PapaDogeDAO papadogeDAO;
+    address public constant WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c; 
+    IDEXRouter public router;
+    PapaDogeDAO public papadogeDAO;
 
-    address[] shareholders;
-    mapping (address => uint256) shareholderIndexes;
-    mapping (address => uint256) shareholderClaims;
+    address[] public shareholders;
+    mapping (address => uint256) public shareholderIndexes;
+    mapping (address => uint256) public shareholderClaims;
 
     mapping (address => Share) public shares;
 
@@ -609,14 +605,14 @@ contract DividendDistributor3 is IDividendDistributor {
     uint256 public totalDividends;
     uint256 public totalDistributed;
     uint256 public dividendsPerShare;
-    uint256 public dividendsPerShareAccuracyFactor = 10 ** 36;
+    uint256 constant public dividendsPerShareAccuracyFactor = 10 ** 36;
 
-    uint256 public minPeriod = 60 minutes;
+    uint256 public minPeriod = 480 minutes; //8 hours
     uint256 public minDistribution = 1 * (10 ** 18);
 
-    uint256 currentIndex;
+    uint256 public currentIndex;
 
-    bool initialized;
+    bool public initialized;
     modifier initialization() {
         require(!initialized);
         _;
@@ -630,7 +626,7 @@ contract DividendDistributor3 is IDividendDistributor {
     constructor (address _router,  address _papadogeDAO) {
         router = _router != address(0)
         ? IDEXRouter(_router)
-        : IDEXRouter(0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3); //0x10ED43C718714eb63d5aA57B78B54704E256024E
+        : IDEXRouter(0x10ED43C718714eb63d5aA57B78B54704E256024E); 
         papadogeDAO = PapaDogeDAO(_papadogeDAO); 
         _token = msg.sender;
     }
@@ -660,7 +656,7 @@ contract DividendDistributor3 is IDividendDistributor {
 
     function deposit() external payable override onlyToken {
         IBEP20 refToken3 = papadogeDAO.getTok3();
-        uint256 balanceBefore = refToken3.balanceOf(address(this)); //Main
+        uint256 balanceBefore = refToken3.balanceOf(address(this)); 
 
         address[] memory path = new address[](2);
         path[0] = WBNB;
@@ -760,30 +756,30 @@ contract PapaDoge is IBEP20, Auth {
     using SafeMath for uint256;
 
     uint256 public constant MASK = type(uint128).max;
-    address public WBNB = 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd;
-    address DEAD = 0x000000000000000000000000000000000000dEaD;
-    address ZERO = 0x0000000000000000000000000000000000000000;
-    address DEAD_NON_CHECKSUM = 0x000000000000000000000000000000000000dEaD;
+    address constant WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+    address constant DEAD = 0x000000000000000000000000000000000000dEaD;
+    address constant ZERO = 0x0000000000000000000000000000000000000000;
+    
 
-    string constant _name = "Papa Doge";
-    string constant _symbol = "PAPA";
-    uint8 constant _decimals = 9;
+    string constant public _name = "Papa Doge";
+    string constant public _symbol = "PAPA";
+    uint8 constant public _decimals = 9;
 
-    uint256 _totalSupply = 1_000_000_000_000 * (10 ** _decimals);
-    uint256 public _maxTxAmount = _totalSupply.div(25); // 5%
+    uint256 constant public _totalSupply = 1_000_000_000_000 * (10 ** _decimals);
+    uint256 public _maxTxAmount = _totalSupply.div(100); // 1%
 
-    mapping (address => uint256) _balances;
-    mapping (address => mapping (address => uint256)) _allowances;
+    mapping (address => uint256) public _balances;
+    mapping (address => mapping (address => uint256)) public _allowances;
 
-    mapping (address => bool) isFeeExempt;
-    mapping (address => bool) isTxLimitExempt;
-    mapping (address => bool) isDividendExempt;
+    mapping (address => bool) public isFeeExempt;
+    mapping (address => bool) public isTxLimitExempt;
+    mapping (address => bool) public isDividendExempt;
 
-    uint256 liquidityFee = 100;
-    uint256 buybackFee = 100;
-    uint256 reflectionFee = 1200;
-    uint256 totalFee = 1400;
-    uint256 feeDenominator = 10000;
+    uint256 public liquidityFee = 200;
+    uint256 public buybackFee = 200;
+    uint256 public reflectionFee = 1000;
+    uint256 public totalFee = 1400;
+    uint256 public feeDenominator = 10000;
 
     uint256 public refPercent1;
     uint256 public refPercent2;
@@ -792,8 +788,8 @@ contract PapaDoge is IBEP20, Auth {
     address public autoLiquidityReceiver;
     address public marketingFeeReceiver;
 
-    uint256 targetLiquidity = 25;
-    uint256 targetLiquidityDenominator = 100;
+    uint256 public targetLiquidity = 25;
+    uint256 public targetLiquidityDenominator = 100;
 
     IDEXRouter public router;
     address public pair;
@@ -801,34 +797,35 @@ contract PapaDoge is IBEP20, Auth {
     uint256 public launchedAt;
     uint256 public launchedAtTimestamp;
 
-    uint256 buybackMultiplierNumerator = 200;
-    uint256 buybackMultiplierDenominator = 100;
-    uint256 buybackMultiplierTriggeredAt;
-    uint256 buybackMultiplierLength = 30 minutes;
+    uint256 public buybackMultiplierNumerator = 200;
+    uint256 public buybackMultiplierDenominator = 100;
+    uint256 public buybackMultiplierTriggeredAt;
+    uint256 public buybackMultiplierLength = 30 minutes;
 
     bool public autoBuybackEnabled = false;
-    mapping (address => bool) buyBacker;
-    uint256 autoBuybackCap;
-    uint256 autoBuybackAccumulator;
-    uint256 autoBuybackAmount;
-    uint256 autoBuybackBlockPeriod;
-    uint256 autoBuybackBlockLast;
+    mapping (address => bool) public buyBacker;
+    uint256 public autoBuybackCap;
+    uint256 public autoBuybackAccumulator;
+    uint256 public autoBuybackAmount;
+    uint256 public autoBuybackBlockPeriod;
+    uint256 public autoBuybackBlockLast;
 
-    DividendDistributor distributor;
-    DividendDistributor2 distributor2;
-    DividendDistributor3 distributor3;
+    DividendDistributor public distributor;
+    DividendDistributor2 public distributor2;
+    DividendDistributor3 public distributor3;
     address public distributorAddress;
     address public distributorAddress2;
     address public distributorAddress3;
 
-    PapaDogeDAO papadogeDAO;
+    PapaDogeDAO public papadogeDAO;
     address public papadogeDAOaddress;
 
-    uint256 distributorGas = 650000; //try lower (BASE 500_000)
+    ///@dev higher gas means more reflections go through per transaction, but holders pay more tx fee.
+    uint256 public distributorGas = 500000; 
 
     bool public swapEnabled = true;
     uint256 public swapThreshold = _totalSupply / 20000; // 0.0005%
-    bool inSwap;
+    bool public inSwap;
     modifier swapping() { inSwap = true; _; inSwap = false; }
 
     constructor (
@@ -850,8 +847,8 @@ contract PapaDoge is IBEP20, Auth {
         distributorAddress3 = address(distributor3);
 
         refPercent1 = 60;
-        refPercent2 = 30;
-        refPercent3 = 10;
+        refPercent2 = 25;
+        refPercent3 = 15;
 
         isFeeExempt[msg.sender] = true;
         isTxLimitExempt[msg.sender] = true;
@@ -911,7 +908,7 @@ contract PapaDoge is IBEP20, Auth {
         if(shouldSwapBack()){ swapBack(); }
         if(shouldAutoBuyback()){ triggerAutoBuyback(); }
 
-        //        if(!launched() && recipient == pair){ require(_balances[sender] > 0); launch(); }
+    
 
         _balances[sender] = _balances[sender].sub(amount, "Insufficient Balance");
 
@@ -921,33 +918,30 @@ contract PapaDoge is IBEP20, Auth {
         _balances[recipient] = _balances[recipient].add(amountReceived);
 
 
-    //Set all shares for each reward token per holder.
-    //Fees are allocated by rank from Main : Secondary : Third
+    ///@notice Set all shares for each reward token per holder.
+    ///Fees are allocated by rank from Main : Secondary : Third
 
-        //DOGE - REFTOKEN 1 (Main)
+        ///@notice original: DOGE - REFTOKEN 1 (Main)
             if(!isDividendExempt[sender]){ try distributor.setShare(sender, _balances[sender]) {} catch {} }
             if(!isDividendExempt[recipient]){ try distributor.setShare(recipient, _balances[recipient]) {} catch {} }
             try distributor.process(distributorGas) {} catch {}
-        //BABYDOGE - REFTOKEN 2 (Secondary)
+        ///@notice original: BABYDOGE - REFTOKEN 2 (Secondary)
             if(!isDividendExempt[sender]){ try distributor2.setShare(sender, _balances[sender]) {} catch {} }
             if(!isDividendExempt[recipient]){ try distributor2.setShare(recipient, _balances[recipient]) {} catch {} }
             try distributor2.process(distributorGas) {} catch {}
-        //FLOKI - REFTOKEN 3 (Third)
+        ///@notice original: FLOKI - REFTOKEN 3 (Third)
             if(!isDividendExempt[sender]){ try distributor3.setShare(sender, _balances[sender]) {} catch {} }
             if(!isDividendExempt[recipient]){ try distributor3.setShare(recipient, _balances[recipient]) {} catch {} }
             try distributor3.process(distributorGas) {} catch {}
-        
-
 
         emit Transfer(sender, recipient, amountReceived);
         return true;
     }
 
-    //Transfer without fees.
+    ///@dev Transfer without fees.
     function _basicTransfer(address sender, address recipient, uint256 amount) internal returns (bool) {
         _balances[sender] = _balances[sender].sub(amount, "Insufficient Balance");
         _balances[recipient] = _balances[recipient].add(amount);
-  //        emit Transfer(sender, recipient, amount);
         return true;
     }
 
@@ -957,8 +951,8 @@ contract PapaDoge is IBEP20, Auth {
         require(amount <= _maxTxAmount || isTxLimitExempt[sender], "TX Limit Exceeded");
     }
 
-    //Checks to see if PAPA transfer should tax fee.
-    //DEX and PAPA Staking Contract are exempt.
+    ///@notice Checks to see if PAPA transfer should tax fee.
+    ///@dev DEX and PAPA Staking Contract are exempt from tx fees.
     function shouldTakeFee(address sender, address to) internal view returns (bool) {
         if(to == papadogeDAO.getPapaStake()){ return false; } 
         else{return !isFeeExempt[sender];}
@@ -995,7 +989,7 @@ contract PapaDoge is IBEP20, Auth {
         && !inSwap
         && swapEnabled
         && _balances[address(this)] >= swapThreshold;
-        //switches if the balance is greater than the swap threshhold
+      
     }
 
     function swapBack() internal swapping {
@@ -1023,7 +1017,8 @@ contract PapaDoge is IBEP20, Auth {
         uint256 amountBNBLiquidity = amountBNB.mul(dynamicLiquidityFee).div(totalBNBFee).div(2);
         uint256 amountBNBReflection = amountBNB.mul(reflectionFee).div(totalBNBFee);
 
-        //Deposit for 3 reward tokens (Found in PapaDogeDao contract (refToken1,2,3);             //Rank and token determined by stakers in DAO.
+        ///@notice Deposit for 3 reward tokens (Found in PapaDogeDao contract (refToken1,2,3); 
+        ///@dev Rank and tokens determined by stakers in the Papa Doge DAO contract.
         try distributor.deposit{value: (amountBNBReflection / 100) * refPercent1}() {} catch {}   //MAIN      (highest allocation)
         try distributor2.deposit{value: (amountBNBReflection / 100) * refPercent2}() {} catch {}  //SECONDARY (medium allocation)
         try distributor3.deposit{value: (amountBNBReflection / 100) * refPercent3}() {} catch {}  //THIRD     (lowest allocation)
@@ -1062,7 +1057,7 @@ contract PapaDoge is IBEP20, Auth {
         buybackMultiplierTriggeredAt = 0;
     }
 
-    //Triggers when BNB liquidiy is low.
+    //Triggers when BNB liquidity is low.
     function triggerAutoBuyback() internal {
         buyTokens(autoBuybackAmount, DEAD);
         autoBuybackBlockLast = block.number;
@@ -1099,9 +1094,7 @@ contract PapaDoge is IBEP20, Auth {
         buybackMultiplierLength = length;
     }
 
-    function launched() internal view returns (bool) {
-        return launchedAt != 0;
-    }
+    
 
     function launch() public authorized {
         require(launchedAt == 0, "Already launched boi");
@@ -1109,13 +1102,14 @@ contract PapaDoge is IBEP20, Auth {
         launchedAtTimestamp = block.timestamp;
     }
 
-    //Maximum transaction limit.
+    ///@notice Maximum transaction limit.
     function setTxLimit(uint256 amount) external authorized {
         require(amount >= _totalSupply / 1000);
         _maxTxAmount = amount;
     }
 
-    //Set distributors don't give rewards to an address.
+    ///@notice Set distributors don't give rewards to an address.
+    ///Distributors should not receive rewards.
     function setIsDividendExempt(address holder, bool exempt) external authorized {
         require(holder != address(this) && holder != pair);
         isDividendExempt[holder] = exempt;
@@ -1151,8 +1145,8 @@ contract PapaDoge is IBEP20, Auth {
         autoLiquidityReceiver = _autoLiquidityReceiver;
     }
 
-    //Fee allocation proportions out of 100%.
-    //Main token, secondary, and third.
+    ///@notice Fee allocation proportions out of 100%.
+    ///@dev Main token, secondary, and third. Used in swapback() function for distributions.
     function setReflectionPercentages(uint primary, uint secondary, uint third) external authorized {
         require(primary + secondary + third == 100, "Percents must total 100.");
         refPercent1 = primary;
@@ -1171,16 +1165,16 @@ contract PapaDoge is IBEP20, Auth {
     }
 
     function setDistributionCriteria(uint256 _minPeriod, uint256 _minDistribution) external authorized {
-        //same distribution criterias for all reward tokens.
+        ///@notice same distribution criterias for all reward tokens.
         distributor.setDistributionCriteria(_minPeriod, _minDistribution);
         distributor2.setDistributionCriteria(_minPeriod, _minDistribution);
         distributor3.setDistributionCriteria(_minPeriod, _minDistribution);
 
     }
 
-    //Max gas allocated for reward token distributions for EACH distributor (3 total).
-    //Lower gas -> slower reward release per transfer, lower fees.
-    //Higher gas -> faster reward release per transfer, higher fees.
+    ///@notice Max gas allocated for reward token distributions for EACH distributor (3 total).
+    ///@dev Lower gas -> slower reward release per transfer, lower fees.
+    ///@dev Higher gas -> faster reward release per transfer, higher fees.
     function setDistributorSettings(uint256 gas) external authorized {
         require(gas < 750000); 
         distributorGas = gas;
@@ -1190,7 +1184,7 @@ contract PapaDoge is IBEP20, Auth {
         return _totalSupply.sub(balanceOf(DEAD)).sub(balanceOf(ZERO));
     }
 
-    //BNB backing PAPA in DEX router.
+    ///@notice BNB backing PAPA in DEX router.
     function getLiquidityBacking(uint256 accuracy) public view returns (uint256) {
         return accuracy.mul(balanceOf(pair).mul(2)).div(getCirculatingSupply());
     }
@@ -1202,5 +1196,4 @@ contract PapaDoge is IBEP20, Auth {
     event AutoLiquify(uint256 amountBNB, uint256 amountBOG);
     event BuybackMultiplierActive(uint256 duration);
 }
-
 
