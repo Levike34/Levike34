@@ -1,25 +1,15 @@
 -Hello, I am Levi Meadows and I am a Blockchain developer. 
 I have been working with Solidity to build real-world applications
 in DeFi and NFTs.  I build all of my applications from start to finish (Full-Stack) 
-using the Solidity + Truffle + Web3 + React framework.
+using the Solidity + Truffle + Web3 + React framework, and I am also working in Substrate and Solana
+applications.
 
-I have built:
+Currently I am working on a Metaverse-blockchain (VRMETA) and an Insurance Blockchain (CCLC) using
+Substrate and ink!.  Alongside these projects, I am writing the in-game economy smart contracts for 
+Pixelland (Binance), Star Alliance(Solana), and Rule the Saga(AVAX).
 
-Decentralized Exchanges (DEX):
-clearchainlife.com/clearswap
-poseidos.net/tokenswap
+All of these games will be adapted to VRMETA.
 
-ICO with Vesting: clearchainlife.com/purchase
-
-Staking + Yield Farming: poseidos.net/underworld
-
-ArchAngel Staking front-end (Web3) - Gabriel staking.
-PROFIT token staking.
-
-NFT Market Place Airdrop: poseidos.net/gumdrop
-
-I am confident in my skills in Solidity.  With Solidity being a Turing-complete language, I 
-am sure that I can build any blockchain application I can imagine.
 - 
 - 📫 How to reach me:
 
