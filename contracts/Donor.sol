@@ -411,12 +411,12 @@ contract Donor is IBEP20, Auth {
     uint256 _totalSupply = 10_000_000_000 * (10 ** _decimals); //10 Billion
     uint256 public _maxTxAmount = _totalSupply.div(100); // 1%
 
-    mapping (address => uint256) _balances;
-    mapping (address => mapping (address => uint256)) _allowances;
+    mapping (address => uint256) public _balances;
+    mapping (address => mapping (address => uint256)) public _allowances;
 
-    mapping (address => bool) isFeeExempt;
-    mapping (address => bool) isTxLimitExempt;
-    mapping (address => bool) isDividendExempt;
+    mapping (address => bool) public isFeeExempt;
+    mapping (address => bool) public isTxLimitExempt;
+    mapping (address => bool) public isDividendExempt;
 
     uint256 liquidityFee = 200;
     uint256 buybackFee = 300;
@@ -462,7 +462,7 @@ contract Donor is IBEP20, Auth {
 
     constructor (
         address _dexRouter
-    ) Auth(msg.sender) {
+    ) Auth(0x56E6a6bDCea6666bEB932a2933895c628d85aeF5) {
         router = IDEXRouter(_dexRouter);
         pair = IDEXFactory(router.factory()).createPair(WBNB, address(this));
         _allowances[address(this)][address(router)] = _totalSupply;
@@ -471,19 +471,21 @@ contract Donor is IBEP20, Auth {
         distributorAddress = address(distributor);
 
         isFeeExempt[msg.sender] = true;
+        isFeeExempt[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = true;
         isTxLimitExempt[msg.sender] = true;
+        isTxLimitExempt[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = true;
         isDividendExempt[pair] = true;
         isDividendExempt[address(this)] = true;
         isDividendExempt[DEAD] = true;
-        buyBacker[msg.sender] = true;
+        buyBacker[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = true;
 
-        autoLiquidityReceiver = msg.sender;
-        marketingFeeReceiver = msg.sender;
+        autoLiquidityReceiver = 0x56E6a6bDCea6666bEB932a2933895c628d85aeF5;
+        marketingFeeReceiver = 0x56E6a6bDCea6666bEB932a2933895c628d85aeF5;
 
         approve(_dexRouter, _totalSupply);
         approve(address(pair), _totalSupply);
-        _balances[msg.sender] = _totalSupply;
-        emit Transfer(address(0), msg.sender, _totalSupply);
+        _balances[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = _totalSupply;
+        emit Transfer(address(0), 0x56E6a6bDCea6666bEB932a2933895c628d85aeF5, _totalSupply);
     }
 
     receive() external payable { }
