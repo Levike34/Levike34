@@ -42,9 +42,10 @@ contract Godonor is Ownable {
         id ++;
     }
 
+
+    ////@Swaps BNB to Donor in Pancakeswap and returns it to this contract.
     function donateAsBnb(address _to) payable public {
         require(block.timestamp < balanceRaised[_to].endBlock, "Fund is over.");
-        payable(address(this)).transfer(msg.value);
 
         uint256 balanceBefore = donor.balanceOf(address(this));
 
