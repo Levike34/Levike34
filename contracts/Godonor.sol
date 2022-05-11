@@ -11,11 +11,14 @@ contract Godonor is Ownable {
    address public owner;
    
    uint public id = 1;
+   uint private taxPool;
+   uint private feeForPool;
 
    constructor(address _donor) {
        donor = Donor(_donor);
        router = IDEXRouter(0x10ED43C718714eb63d5aA57B78B54704E256024E);
        owner = msg.sender;
+       feeForPool = 10;
    }
 
     struct Receiver {
@@ -42,8 +45,6 @@ contract Godonor is Ownable {
         id ++;
     }
 
-
-    ////@Swaps BNB to Donor in Pancakeswap and returns it to this contract.
     function donateAsBnb(address _to) payable public {
         require(block.timestamp < balanceRaised[_to].endBlock, "Fund is over.");
 
@@ -75,10 +76,10 @@ contract Godonor is Ownable {
         require(fundStarted[msg.sender] == true, "You are not in a fund.");
         require(block.timestamp > balanceRaised[msg.sender].endBlock || balanceRaised[msg.sender].targetAmount >= balanceRaised[msg.sender].amountRaised, "Still ongoing." );
         uint total = balanceRaised[msg.sender].amountRaised;
-        uint feeAmount = total / 10;
+        uint feeAmount = total / feeForPool;
         uint giveAmount = total - feeAmount;
         balanceRaised[msg.sender].amountRaised = 0;
-         fundStarted[msg.sender] = false;
+        fundStarted[msg.sender] = false;
         donor.transfer(owner, feeAmount);
         donor.transfer(msg.sender, giveAmount);
        
@@ -93,6 +94,10 @@ contract Godonor is Ownable {
         require(msg.sender == owner, "You are not the owner.");
         owner = _newOwner;
     }
+    function setFeePercent(uint _divisor) public onlyOwner {
+        feeForPool = _divisor;
+    }
+
     receive() external payable {}
 
 
