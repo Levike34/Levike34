@@ -18,6 +18,9 @@ public class CoinHandler : MonoBehaviour
 {
     public Player player;
     public string coinz;
+    public string spellCasts;
+    public string HP;
+    public string MP;
 
     public class EIP20DeploymentBase : ContractDeploymentMessage
     {
@@ -83,6 +86,23 @@ public class CoinHandler : MonoBehaviour
         public BigInteger Balance { get; set; }
     }
 
+    /// <summary>
+    /// Items
+    /// </summary>
+    [Function("getItemBalance", "uint256")]
+    public class ItemBalanceFunction : FunctionMessage
+    {
+        [Parameter("uint256", "choice", 1)]
+        public uint Choice { get; set; }
+    }
+
+    [FunctionOutput]
+    public class ItemBalanceFunctionOutput : IFunctionOutputDTO
+    {
+        [Parameter("uint256", 1)]
+        public BigInteger Balance { get; set; }
+    }
+
 
 
     [Event("Transfer")]
@@ -129,7 +149,7 @@ public class CoinHandler : MonoBehaviour
         var privateKey = "e645996b1cff9e0db7605ca534d1a5dfbcf3b7c1060c1613dcc5f20a45231f19";
         var account = "0x65F7dbC2082A9571f3d49bC27975Ce6F26B60eb7";
         //initialising the transaction request sender
-        var contractAddress = "0x3acA82ABE62Ac5f424c8287762a64078F848D4e6";
+        var contractAddress = "0x228bc4018C326Ef2D1a0f2cf80479e5f7859F82D";
 
 
 
@@ -140,7 +160,31 @@ public class CoinHandler : MonoBehaviour
         yield return queryRequest.Query(new BalanceOfFunction() { Owner = account }, contractAddress);
         var dtoResult = queryRequest.Result.Balance;
         coinz = dtoResult.ToString();
+
+
+        var queryRequest2 = new QueryUnityRequest<ItemBalanceFunction, ItemBalanceFunctionOutput>(url, account);
+        yield return queryRequest2.Query(new ItemBalanceFunction() { Choice = 0 }, contractAddress);
+        var dtoResult2 = queryRequest2.Result.Balance;
+        BigInteger spells = dtoResult2;
+        spellCasts = spells.ToString();
+
+        var queryRequest3 = new QueryUnityRequest<ItemBalanceFunction, ItemBalanceFunctionOutput>(url, account);
+        yield return queryRequest3.Query(new ItemBalanceFunction() { Choice = 1 }, contractAddress);
+        var dtoResult3 = queryRequest3.Result.Balance;
+        BigInteger hPotions = dtoResult3;
+        HP = hPotions.ToString();
+
+        var queryRequest4 = new QueryUnityRequest<ItemBalanceFunction, ItemBalanceFunctionOutput>(url, account);
+        yield return queryRequest4.Query(new ItemBalanceFunction() { Choice = 2 }, contractAddress);
+        var dtoResult4 = queryRequest4.Result.Balance;
+        BigInteger mPotions = dtoResult4;
+        MP = mPotions.ToString();
+
+
         Debug.Log(coinz);
+        Debug.Log(spells);
+        Debug.Log(hPotions);
+        Debug.Log(mPotions);
         yield return coinz;
    
 
@@ -152,7 +196,7 @@ public class CoinHandler : MonoBehaviour
         var url = "https://api.avax-test.network/ext/bc/C/rpc";
         var privateKey = "e645996b1cff9e0db7605ca534d1a5dfbcf3b7c1060c1613dcc5f20a45231f19";
         var account1 = "0x65F7dbC2082A9571f3d49bC27975Ce6F26B60eb7";
-        var contractAddress = "0x3acA82ABE62Ac5f424c8287762a64078F848D4e6";
+        var contractAddress = "0x228bc4018C326Ef2D1a0f2cf80479e5f7859F82D";
         var account = new Nethereum.Web3.Accounts.Account(privateKey);
         var web3 = new Web3(account, url);
 
