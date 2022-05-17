@@ -159,7 +159,9 @@ public class CoinHandler : MonoBehaviour
         var queryRequest = new QueryUnityRequest<BalanceOfFunction, BalanceOfFunctionOutput>(url, account);
         yield return queryRequest.Query(new BalanceOfFunction() { Owner = account }, contractAddress);
         var dtoResult = queryRequest.Result.Balance;
-        coinz = dtoResult.ToString();
+        long denominator = 1000000000000000000;
+        BigInteger x = BigInteger.Divide(dtoResult, denominator);
+        coinz = x.ToString();
 
 
         var queryRequest2 = new QueryUnityRequest<ItemBalanceFunction, ItemBalanceFunctionOutput>(url, account);
