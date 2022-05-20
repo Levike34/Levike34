@@ -426,14 +426,8 @@ class App extends Component {
     let result = await this.cclc.methods.balanceOf(this.state.tokenSaleAddress).call({from:this.accounts[0]});
     let userTokens = await this.cclc.methods.balanceOf(this.accounts[0]).call({from:this.accounts[0]});
     let amountRaised = await this.myTokenSale2.methods.amountRaised().call({from:this.accounts[0]});
-    let fundStart = await this.myTokenSale2.methods.getFundStartTime().call({from:this.accounts[0]});
-    let fundEnd = await this.myTokenSale2.methods.getFundEndTime().call({from:this.accounts[0]});
-    let currentTime = await this.myTokenSale2.methods.getTime().call({from:this.accounts[0]});
-    let userVest1 = await this.myTokenSale1.methods.getUserBalance().call({from:this.accounts[0]});
-    let userVest2 = await this.myTokenSale2.methods.getUserBalance().call({from:this.accounts[0]});
-    let userVest = userVest1 + userVest2;
+
     let claimAmount = await this.myTokenSale2.methods.getClaimAmount().call({from:this.accounts[0]});
-    let userClaimed = await this.myTokenSale2.methods.getUserClaimed().call({from:this.accounts[0]});
     let USD = await this.priceConsumerV3.methods.getLatestPrice().call({from:this.accounts[0]});
     let totalLeft = await this.myTokenSale2.methods.getUnsold().call({from:this.accounts[0]});
     let userBought = await this.myTokenSale2.methods.getUserBought().call({from:this.accounts[0]});
@@ -441,12 +435,9 @@ class App extends Component {
       balance1: this.web3.utils.fromWei(result, 'ether'),
       userTokens: this.web3.utils.fromWei(userTokens,'ether'),
       totalFunds: this.web3.utils.fromWei(amountRaised, 'ether'),
-      days: Math.trunc(fundStart - currentTime) / 86400,
-      fundStart: Math.trunc((fundStart - currentTime) / 86400),
-      fundTimeLeft: Math.trunc((fundEnd - currentTime) / 86400),
+
       userVest: this.web3.utils.fromWei(userVest, 'ether'),
       claimAmount: this.web3.utils.fromWei(claimAmount, 'ether'),
-      userClaimed: this.web3.utils.fromWei(userClaimed, 'ether'),
       USD: this.web3.utils.fromWei(USD, 'shannon') * 10,
       unsold: this.web3.utils.fromWei(totalLeft, 'ether'),
       userBought: this.web3.utils.fromWei(userBought, 'ether'),
