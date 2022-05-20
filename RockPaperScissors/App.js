@@ -55,7 +55,334 @@ class App extends Component {
     );
 
     this.myTokenSale2 = new this.web3.eth.Contract(
-      MyTokenSale2.abi,
+      [
+        {
+          "inputs": [],
+          "name": "burnUnsold",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "beneficiary",
+              "type": "address"
+            }
+          ],
+          "name": "buyTokens",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "_token",
+              "type": "address"
+            }
+          ],
+          "name": "buyWithUSDT",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "endICO",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "transferOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "rate",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address payable",
+              "name": "wallet",
+              "type": "address"
+            },
+            {
+              "internalType": "contract CCLC",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "contract PriceConsumerV3",
+              "name": "_priceFeed",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "renounceOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "TokensClaimed",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "purchaser",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "TokensPurchased",
+          "type": "event"
+        },
+        {
+          "stateMutability": "payable",
+          "type": "receive"
+        },
+        {
+          "inputs": [],
+          "name": "amountRaised",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "boughtTotal",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "cclc",
+          "outputs": [
+            {
+              "internalType": "contract CCLC",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "getUserBalance",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "getUserBought",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "rate",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "token",
+          "outputs": [
+            {
+              "internalType": "contract IERC20",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "totalUnsold",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "userBalance",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "wallet",
+          "outputs": [
+            {
+              "internalType": "address payable",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "weiRaised",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
       "0x91DcbCdfFdB4b593a9e74E1Aec76D65872725003",
     );
     
@@ -246,7 +573,7 @@ class App extends Component {
         <button type='button' onClick={this.addChain}>Add Binance Smart Chain</button><br></br><br></br>
         or go to <a className='notice'href='https://chainlist.org/'>Chainlist.org</a> and type 'bsc'.<br></br><br></br>
         2.  Buy CCLC with BNB, USDT, BUSD, or DAI below.<br></br> <a className='notice'target='_blank' href='https://clearchainlife.com/wp-content/uploads/2021/11/How_to_Purchase_CCLC.pdf'>How to buy with Metamask</a><br></br><br></br>
-        3. Or, send BNB: <p className='notice'></p>0x1Bb93628fcdC20c9b78c542D4FaC141C8049b5Cc</p>
+        3. Or, send BNB: <p className='notice'></p>0x91DcbCdfFdB4b593a9e74E1Aec76D65872725003</p>
         </div>
         <div className='connect'><button className='bigButton' onClick={this.connect}>Connect Wallet</button></div>
         <div className='container'>
@@ -263,8 +590,7 @@ class App extends Component {
         </p>
         
         </div>
-        <p>Start: 1/25/2022<br></br>
-        End: 3/25/2022</p>
+
     
         <input type='text' placeholder='**Connect first**' name='amount1' value={this.state.amount1} onChange={this.handleInputChange}/>
         <p>Buy with: <br></br>
@@ -307,7 +633,7 @@ class App extends Component {
         <button type='button' onClick={this.addChain}>Add Binance Smart Chain</button><br></br><br></br>
         or go to <a className='notice'href='https://chainlist.org/'>Chainlist.org</a> and type 'bsc'.<br></br><br></br>
         2.  Buy CCLC with BNB, USDT, BUSD, or DAI below. <br></br><a className='notice2'target='_blank' href='https://clearchainlife.com/wp-content/uploads/2021/11/How_to_Purchase_CCLC.pdf'>How to buy with Metamask</a><br></br><br></br>
-        3. Or, send BNB: <p className='notice'></p>0x1Bb93628fcdC20c9b78c542D4FaC141C8049b5Cc</p>
+        3. Or, send BNB: <p className='notice'></p>0x91DcbCdfFdB4b593a9e74E1Aec76D65872725003</p>
         </div>
         <div className="connect" ><h4 className="bigButton">Connected({this.accounts[0].substr(0,5)+"....."+this.accounts[0].slice(-3)})</h4></div>
    <div className='container'>
