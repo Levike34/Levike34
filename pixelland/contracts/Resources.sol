@@ -7,6 +7,7 @@ import "./Pixel.sol";
 
 contract Resources is ERC1155 {
     Pixel public pixel;
+    address public master;
 
     uint256 public constant WOOD = 0;
     uint256 public constant STONE = 1;
@@ -20,6 +21,29 @@ contract Resources is ERC1155 {
     uint256 public constant DIAMOND_RINGS = 9;
     uint256 public constant REPAIR_HAMMER = 10;
 
+    function findDirectPrice(uint x) internal pure returns(uint256 amount) {
+        if(x == WOOD) {
+            return 10;
+        } else if(x == STONE) {
+            return 10;
+        } else if(x == FOOD) {
+            return 10;
+        } else if(x == HEALTH_POTIONS) {
+            return 30;
+        } else if(x == STAMINA_POTIONS) {
+            return 30;
+        } else if(x == DUAL_POTIONS) {
+            return 100;
+        } else if(x == METAL) {
+            return 35;
+        } else if(x == GEMS) {
+            return 1000;
+        } else if(x == DIAMOND_RINGS) {
+            return 100000;
+        }else if(x == REPAIR_HAMMER) {
+            return 50;
+        } 
+    }
 
     mapping(address => bool) public got;
 
@@ -34,8 +58,12 @@ contract Resources is ERC1155 {
         pixel.transfer(msg.sender, 10000000000000000000000);
     }
 
-    function buyItems(uint256 resourceId) public {
-        
+    function buyResources(uint256 resourceId, uint256 amountToBuy) public {
+        uint pricePer = findDirectPrice(resourceId);
+        uint amount = amountToBuy * pricePer;
+        uint decimals = 1000000000000000000;
+        pixel.transferFrom(msg.sender, master, amount * decimals);
+        _mint(msg.sender, resourceId, amountToBuy, "");
     }
 
     constructor(address _pixel) ERC1155("Pixelland Resources") {
@@ -48,6 +76,7 @@ contract Resources is ERC1155 {
         _mint(msg.sender, METAL, 10**4, "");
         _mint(msg.sender, GEMS, 10**3, "");
         pixel = Pixel(_pixel);
+        master = msg.sender;
     }
 
     function chopWood(uint amount) public {
@@ -127,4 +156,6 @@ contract Resources is ERC1155 {
         pixel.transferFrom(msg.sender, pixel.owner(), amountPixel);
         _mint(msg.sender, DIAMOND_RINGS, amount, "");
     }
+
+
 }
