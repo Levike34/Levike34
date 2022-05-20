@@ -56,7 +56,7 @@ class App extends Component {
 
     this.myTokenSale2 = new this.web3.eth.Contract(
       MyTokenSale2.abi,
-      "0x1Bb93628fcdC20c9b78c542D4FaC141C8049b5Cc",
+      "0x91DcbCdfFdB4b593a9e74E1Aec76D65872725003",
     );
     
 
@@ -85,7 +85,7 @@ class App extends Component {
     this.listenToETHTransfer(); 
     this.setState({ 
       loaded: true,
-      tokenSaleAddress: "0x1Bb93628fcdC20c9b78c542D4FaC141C8049b5Cc",
+      tokenSaleAddress: "0x91DcbCdfFdB4b593a9e74E1Aec76D65872725003",
       CCLCAddress: "0x861c52C13c7C1fBd863D73501faD9007EcE2FbB4"
     }, 
     this.getState);
