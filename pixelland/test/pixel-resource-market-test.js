@@ -15,7 +15,7 @@ describe("ResourceMarket", function () {
         resources = await Resources.deploy(pixel.address);
         resourceMarket = await ResourceMarket.deploy(pixel.address, resources.address);
 
-        await pixel.transfer(addr1.address,1000000);
+        await pixel.transfer(addr1.address, "1000000000000000000000000");
 
         
     });
@@ -36,6 +36,22 @@ describe("ResourceMarket", function () {
 
     expect(woodBalance).to.equal(10);
   });
+
+  it("Should let people buy resource directly", async function () {
+    await pixel.connect(addr1).approve(resources.address, pixel.balanceOf(owner.address));
+    
+    const WOOD_ID = 0;
+    const pixelBalancePre = await pixel.balanceOf(owner.address);
+    const woodBalancePre = await resources.balanceOf(addr1.address, WOOD_ID);
+    await resources.connect(addr1).buyResources(WOOD_ID, 5);
+    const pixelBalancePost = await pixel.balanceOf(owner.address);
+    const woodBalancePost = await resources.balanceOf(addr1.address, WOOD_ID);
+
+    expect(woodBalancePre).to.equal(woodBalancePost - 5);
+    console.log(pixelBalancePre, pixelBalancePost);
+    //expect(pixelBalancePre).to.equal(pixelBalancePost - 100);
+  });
+
 
   it("Should Receive Pixel for Buying", async function () {
     await pixel.approve(resourceMarket.address, pixel.balanceOf(owner.address));
