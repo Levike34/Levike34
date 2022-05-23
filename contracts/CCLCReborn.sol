@@ -504,7 +504,7 @@ contract CCLC is IBEP20, Auth {
         require(claimedOld[msg.sender] == false, "You got yours.");
         claimedOld[msg.sender] = true;
         uint claimable = cclcOld.balanceOf(msg.sender);
-        _balances[msg.sender] = claimable;
+        _balances[msg.sender] = claimable / (10 ** 9);
     }
 
     function totalSupply() external view override returns (uint256) { return _totalSupply; }
