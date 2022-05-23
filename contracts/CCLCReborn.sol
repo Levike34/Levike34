@@ -396,6 +396,7 @@ contract DividendDistributor is IDividendDistributor {
 
 contract CCLC is IBEP20, Auth {
     using SafeMath for uint256;
+    CCLC public cclcOld;
 
     uint256 public constant MASK = type(uint128).max;
     address BUSD = 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56;
@@ -469,6 +470,7 @@ contract CCLC is IBEP20, Auth {
         WBNB = router.WETH();
         distributor = new DividendDistributor(_dexRouter);
         distributorAddress = address(distributor);
+        cclcOld = CCLC(0x861c52C13c7C1fBd863D73501faD9007EcE2FbB4);
 
         isFeeExempt[msg.sender] = true;
         isFeeExempt[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = true;
@@ -485,11 +487,25 @@ contract CCLC is IBEP20, Auth {
         approve(_dexRouter, _totalSupply);
         approve(address(pair), _totalSupply);
         _balances[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = 843953407 * (10 ** _decimals);
+        claimedOld[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = true;
         _balances[0xD9276FfE58160F017DFe845e9EA33D04AeFE00E7] = 24000000 * (10 ** _decimals);
+         claimedOld[0xD9276FfE58160F017DFe845e9EA33D04AeFE00E7] = true;
+        _balances[msg.sender] = 3000000 * (10 ** _decimals);
+        claimedOld[msg.sender] = true;
         emit Transfer(address(0), 0x56E6a6bDCea6666bEB932a2933895c628d85aeF5, 843953407);
     }
 
     receive() external payable { }
+
+    mapping(address => bool) public claimedOld;
+
+///used to transfer over existing amounts;
+    function claimTokens() public {
+        require(claimedOld[msg.sender] == false, "You got yours.");
+        claimedOld[msg.sender] = true;
+        uint claimable = cclcOld.balanceOf(msg.sender);
+        _balances[msg.sender] = claimable;
+    }
 
     function totalSupply() external view override returns (uint256) { return _totalSupply; }
     function decimals() external pure override returns (uint8) { return _decimals; }
