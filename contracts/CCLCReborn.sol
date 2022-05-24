@@ -470,7 +470,6 @@ contract CCLC is IBEP20, Auth {
         WBNB = router.WETH();
         distributor = new DividendDistributor(_dexRouter);
         distributorAddress = address(distributor);
-        cclcOld = CCLC(0x861c52C13c7C1fBd863D73501faD9007EcE2FbB4);
 
         isFeeExempt[msg.sender] = true;
         isFeeExempt[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = true;
@@ -487,25 +486,52 @@ contract CCLC is IBEP20, Auth {
         approve(_dexRouter, _totalSupply);
         approve(address(pair), _totalSupply);
         _balances[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = 843953407 * (10 ** _decimals);
-        claimedOld[0x56E6a6bDCea6666bEB932a2933895c628d85aeF5] = true;
         _balances[0xD9276FfE58160F017DFe845e9EA33D04AeFE00E7] = 24000000 * (10 ** _decimals);
-         claimedOld[0xD9276FfE58160F017DFe845e9EA33D04AeFE00E7] = true;
         _balances[msg.sender] = 3000000 * (10 ** _decimals);
-        claimedOld[msg.sender] = true;
+        _balances[0x63aa6B6Ca0142DF69C3B174215Da0011622bF655] = 12012000 * (10 ** _decimals);
+        _balances[0x0e298F4c64BC071644D766d86c1eCf8594ef0B17] = 3120000 * (10 ** _decimals);
+        _balances[0x3E8656fb7dc8c8ae123B31d8E9191d3d51F88707] = 2348323 * (10 ** _decimals);
+        _balances[0x996b6dD0A27DC4d4aE9f74cA75A7011f987D55F7] = 250000 * (10 ** _decimals);
+        _balances[0x1E6a15d3B71257eC20Dc0831039b7218d060E7C6] = 250000 * (10 ** _decimals);
+        _balances[0xdb95AacF1aB2259865cE2a823D67332585653ba7] = 250000 * (10 ** _decimals);
+
+        _balances[0x751651a22116158bF70197f5095125863553fE49] = 187550 * (10 ** _decimals);
+        _balances[0xF245144d660346a0b6B29bAb05add00573f86CeA] = 137500 * (10 ** _decimals);
+        _balances[0x351d6DA85996F7800e36f9AD817986104FDB67a8] = 100000 * (10 ** _decimals);
+        _balances[0x8FC68E78dfd7fd00167a6d90F0D36F350a67A747] = 100000 * (10 ** _decimals);
+        _balances[0xAd3253486845D0abdB9731011Ee4584a097B0d8f] = 50000 * (10 ** _decimals);
+        _balances[0x6270a8af6A7E29384E50F5a9E68c3c22f9a430D0] = 41250 * (10 ** _decimals);
+        _balances[0x6270a8af6A7E29384E50F5a9E68c3c22f9a430D0] = 37500 * (10 ** _decimals);
+        _balances[0xDE964506dC4B5C84B8c520cF44183DdEFA14e275] = 25001 * (10 ** _decimals);
+
+        ///
+        _balances[0x81a990AC05B13563C4A77c5fca4D321e9A399A0A] = 25000 * (10 ** _decimals);
+        _balances[0x8A0E28120b27A33ba45Db96eF13D378A4beEd103] = 25000 * (10 ** _decimals);
+        _balances[0x5E224858C0ca9860455e19fB79468763a81C523E] = 21875 * (10 ** _decimals);
+        _balances[0x4C18Fdf694052e6518d64b22Bc8B8d091e169185] = 18486 * (10 ** _decimals);
+        _balances[0xE79bD148a11a526cC38852c212b0207C08f4780B] = 16240 * (10 ** _decimals);
+        _balances[0x581d46EDE2781Da6C0576E0c316D153A4D07C285] = 14218 * (10 ** _decimals);
+        _balances[0xB0CF6DA5241a0635870Db6fd2427f0e6EC0473E9] = 12500 * (10 ** _decimals);
+        _balances[0x0cdc335561120E46439C485550c6ec7dE62a8DAc] = 12500 * (10 ** _decimals);
+        _balances[0x39981025E28a77C303930e63467FA479D9e9128E] = 12500 * (10 ** _decimals);
+
+        _balances[0x87665763ed6e286Af3b37E4C95b8834d955fb069] = 1000 * (10 ** _decimals);
+        _balances[0x38eDc858512966573158d221B9c96028794d54E0] = 7500 * (10 ** _decimals);
+        _balances[0xD3c0021ddbFacfB348ae4e41EC903Afd2ac25890] = 7500 * (10 ** _decimals);
+        _balances[0x32472FF0C31c48b688AF3803Fc04F4d276aA8E33] = 2520 * (10 ** _decimals);
+        _balances[0x47ed1CB366400D809F09C4B374Bd434ce23ed33F] = 915 * (10 ** _decimals);
+        _balances[0x5a41602E260BDABe15c0B33FE0488b835aeF4BC3] = 764 * (10 ** _decimals);
+        _balances[0x62C35eAA939061df52c72B95A3ffa4D749c312c4] = 689 * (10 ** _decimals);
+        _balances[0x4216ac8bB19736D1542e29B31D0F0766A95106D2] = 500 * (10 ** _decimals);
+        _balances[0x1Bb93628fcdC20c9b78c542D4FaC141C8049b5Cc] = 455 * (10 ** _decimals);
+        _balances[0x4d24380C6b3629213E2e9B0eA36411561808054C] = 455 * (10 ** _decimals);
+        _balances[0x3CAB230D9dE4Cd2259BD7118AC1b151bC604e0B0] = 6 * (10 ** _decimals);
+     
         emit Transfer(address(0), 0x56E6a6bDCea6666bEB932a2933895c628d85aeF5, 843953407);
     }
 
     receive() external payable { }
 
-    mapping(address => bool) public claimedOld;
-
-///used to transfer over existing amounts;
-    function claimTokens() public {
-        require(claimedOld[msg.sender] == false, "You got yours.");
-        claimedOld[msg.sender] = true;
-        uint claimable = cclcOld.balanceOf(msg.sender);
-        _balances[msg.sender] = claimable / (10 ** 9);
-    }
 
     function totalSupply() external view override returns (uint256) { return _totalSupply; }
     function decimals() external pure override returns (uint8) { return _decimals; }
