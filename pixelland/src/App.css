@@ -1,0 +1,715 @@
+@font-face { font-family: VCR; src: url('VCR.ttf'); } 
+
+.App {
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  color: brown;
+  padding:  1em;
+  border-style: solid;
+  border-color: greenyellow;
+  border-width: 3px;
+  
+  height: 90%;
+  font-family: 'VCR';
+  font-size: medium;
+
+}
+
+.App2 {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-self: center;
+  text-align: center;
+  color: brown;
+  padding:  20px;
+  margin: auto;
+  width: 100%;
+  height: 90%;
+  font-family: 'VCR';
+  font-size: medium;
+
+}
+.Container {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background-color: bisque;
+  width: 100%;
+  height: 80%;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-items: center;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+}
+.inventoryColumn {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-items: center;
+  align-items: center;
+  text-align: left;
+  margin: 5px;
+  padding: 5px;
+}
+.artifact {
+  height: 70px;
+  width: 200px;
+  padding: 40px;
+  margin: auto;
+  display: flex;
+  align-self: center;
+}
+.profilePic {
+  display: flex;
+  align-self: initial;
+  height: 100%;
+  width: 30%;
+}
+.profilePicBook {
+  height: 80%;
+  width: 30%;
+  border-style: solid;
+  width: 2px;
+}
+
+.infoUi {
+  height: 150px;
+  width: 150px;
+  display: flex;
+
+}
+
+.infoUi2 {
+  display: flex;
+  background-image: url("./p_land_images/ui.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-family: 'VCR';
+  font-size: small;
+  color: gold;
+  justify-content: center;
+  background-position-y: center;
+  background-position-x: center;
+  text-align: start;
+  padding: 10px;
+ 
+}
+.mask{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 200px;
+  width: 250px;
+}
+.spec {
+  height: 50px;
+  width: 50px;
+}
+
+.columnPicUi {
+
+  margin: auto;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+.rowSpecial {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-items: center;
+  flex-direction: row;
+  margin-top: 70px;
+  margin-bottom: 10px;
+}
+.Book {
+  height: 400px;
+  width: 500px;
+  background-image: url("./p_land_images/book.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -30px;
+  background-position-y: center;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  overflow: hidden;
+  bottom: 50px;
+
+}
+.crafting {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.inventory {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: brown;
+}
+.mainItemPic {
+  display: flex;
+  align-self: center;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-self: center;
+  padding: 5px;
+  margin:auto;
+}
+.recipeIcon {
+  display: flex;
+  align-self: center;
+  width: 60px;
+  height: 60px;
+
+  padding: 5px;
+}
+.centerpic {
+ display: flex;
+ align-self: center;
+  
+  
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.title {
+  width: 100%;
+}
+.rowOfThree {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.Main{
+  text-align: center;
+  background: url("./p_land_images/main.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  text-align: start;
+  background-position-x: center;
+  background-position-y: center;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 0;
+  padding: 10px;
+  color: brown;
+  font-family: 'VCR';
+
+}
+.InfoBox {
+  text-align: left;
+  color: greenyellow;
+  background-color: black;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  padding: 0;
+}
+
+button{
+  color: greenyellow;
+  background-color: black;
+  border-radius: 5px;
+}
+button.shake{
+  animation: shake 1s infinite;
+}
+@keyframes shake {
+0%  { transform: translate(2px, 1px)   rotate(0deg);  }
+10% { transform: translate(-1px, -2px) rotate(-2deg); }
+20% { transform: translate(-3px, 0px)  rotate(3deg);  }
+30% { transform: translate(0px, 2px)   rotate(0deg);  }
+40% { transform: translate(1px, -1px)  rotate(1deg);  }
+50% { transform: translate(-1px, 2px)  rotate(-1deg); }
+60% { transform: translate(-3px, 1px)  rotate(0deg);  }
+70% { transform: translate(2px, 1px)   rotate(-2deg); }
+80% { transform: translate(-1px, -1px) rotate(4deg);  }
+90% { transform: translate(2px, 2px)   rotate(0deg);  }
+100%{ transform: translate(1px, -2px)  rotate(-1deg); }
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.tilepic {
+  background-image: url("./p_land_images/tileback.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  margin-left: 5px;
+}
+.tilepicBig {
+  background-image: url("./p_land_images/tileback.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  margin-top: 20px;
+  height: 230px;
+  width: 230px;
+  display: flex;
+  align-self: center;
+}
+.column2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+ 
+}
+.infoBlock {
+  background-color: rgba(36, 36, 36, 0.842);
+  border: black;
+  border-radius: 3%;
+  border-width: 2px;
+  border-style: dotted;
+  height: 300px;
+  width: 400px;
+  display: flex;
+  align-self: center;
+  background-position: center;
+  margin: auto;
+}
+.infoBlock2 {
+  background-color: rgba(36, 36, 36, 0.842);
+  border: black;
+  border-radius: 3%;
+  border-width: 2px;
+  border-style: dotted;
+  height: 300px;
+  width: 400px;
+  padding: 10px;
+  margin-right: 10px;
+  display: flex;
+  align-self: center;
+  justify-content: space-evenly;
+  background-position: center;
+  margin: auto;
+}
+.popupper{
+  background-image: url("./p_land_images/a1dd.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: black;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+.inputSpec {
+  background-color: beige;
+  display: flex;
+  align-self: center;
+  margin: auto;
+}
+.faucetSpec {
+  border-radius: 20px;
+}
+.buttonpic {
+  background-image: url("./p_land_images/a1f.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  padding: 15px;
+  text-align: center;
+  align-content: center;
+  align-self: center;
+  justify-self: center;
+  color: black;
+  font-family: 'VCR';
+  font-size: x-large;
+  margin: auto;
+
+
+
+}
+.tilepic:hover {
+  box-shadow: 5px 5px 10px white;
+}
+
+h2 {
+  font-family: 'VCR';
+  font-size: x-large;
+}
+h3 {
+  font-family: 'VCR';
+  font-size: large;
+}
+
+p {
+  font-family: 'VCR';
+  font-size: medium;
+}
+
+
+.App-link {
+  color: #09d3ac;
+}
+
+.balance {
+  display: flex;
+  justify-self: baseline;
+}
+
+body{
+  background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.75)
+  ),
+  url("map3-5.png");
+  display: flex;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  flex-direction: column;
+  overflow:hidden;
+ 
+}
+
+.HeaderBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: -5px;
+}
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .App2{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 180px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+  }
+  .column {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    margin: auto;
+    padding: 5px;
+    
+  }
+  .popupper{
+    background-image: url("./p_land_images/a1dd.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: black;
+    padding: 10px;
+    margin-right: 250px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+  }
+  .popupper2{
+    background-image: url("./p_land_images/a1dd.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: black;
+    padding: 10px;
+  
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+  }
+  .columnPicUi {
+
+   width: 100%;
+   height: 100px;
+  }
+
+
+  body{
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.75)
+    ),
+    url("map3-5.png");
+    display: flex;
+    background-repeat: repeat-x;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    align-self: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    margin:0;
+    width: 100%;
+    color: brown;
+    overflow: auto;
+
+  
+   
+  }
+
+  input {
+    width: 50%;
+  }
+  .container{
+    width: 100%;
+  }
+  p{
+    font-size: small;
+  }
+  h2 {
+    font-family: 'VCR';
+    font-size: medium;
+  }
+  h3 {
+    font-family: 'VCR';
+    font-size: small;
+  }
+  .Book {
+    overflow: hidden;
+    background-image: url("./p_land_images/book.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    background-position-y: center;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
+  .tilepicBig {
+    background-image: url("./p_land_images/tileback.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2px;
+    margin-top: 2px;
+    height: 34px;
+    width: 34px;
+    display: flex;
+    align-self: center;
+  }
+  .recipeIcon {
+    display: flex;
+    align-self: center;
+    width: 40px;
+    height: 40px;
+  
+    padding: 5px;
+  }
+  .centerpic {
+   display: flex;
+   align-self: center;
+  }
+  .rowSpecial {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-items: center;
+    flex-direction: row;
+  }
+
+
+  .inventoryColumn {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-items: center;
+    align-items: center;
+    text-align: left;
+    margin: 5px;
+    padding: 5px;
+  }
+  .artifact {
+    height: 70px;
+    width: 100px;
+    padding: 20px;
+    margin-bottom: 15px;
+    margin: auto;
+    display: flex;
+    align-self: center;
+  }
+  .artifactGlow {
+    height: 70px;
+    width: 100px;
+    padding: 20px;
+    margin-bottom: 15px;
+    margin: auto;
+    display: flex;
+    align-self: center;
+    box-shadow: 3px 3px 5px whitesmoke;
+  }
+  .profilePic {
+    height: 100px;
+    width: 80px;
+  
+  }
+  
+
+  .infoUi {
+    height: 30px;
+    width: 30px;
+    display: flex;
+  
+  }
+  
+  .infoUi2 {
+    display: flex;
+    background-image: url("./p_land_images/ui.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-family: 'VCR';
+    font-size: small;
+    color: gold;
+    padding: 18px;
+    text-align: start;
+    width: 100%;
+    height: max-content;
+  }
+  .mask{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 20px;
+    width: 20px;
+  }
+  .HeaderBar {
+    display: flex;
+    flex-direction: row;
+  
+    text-align: start;
+    align-items: center;
+    margin-top: 0;
+    margin: auto;
+    padding: 0;
+    padding-top: 0;
+    position: fixed;
+    align-self: center;
+  }
+  .headerRow {
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  .Book2 {
+    overflow: hidden;
+    background-image: url("./p_land_images/book.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px;
+    height: 600px;
+    width: 90%;
+    background-position-y: center;
+    background-position-x: center;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .infoBlock2 {
+    background-color: rgba(36, 36, 36, 0.842);
+    border: black;
+    border-radius: 3%;
+    border-width: 2px;
+    border-style: dotted;
+    height: 300px;
+    width: 85%;
+    padding: 2px;
+    margin: auto;
+    display: flex;
+    align-self: center;
+    justify-content: space-evenly;
+    background-position: center;
+    margin: auto;
+  }
+  .buttonpic {
+    background-image: url("./p_land_images/a1f.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    padding: 5px;
+    text-align: center;
+    align-content: center;
+    justify-self: center;
+    color: black;
+    font-family: 'VCR';
+    font-size: medium;
+    margin: auto;
+  }
+  .rowHeader {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+  .mainItemPic {
+    display: flex;
+    align-self: center;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-self: center;
+    padding: 5px;
+    margin:auto;
+  }
+
+  .rowOfThree {
+    margin-left: 0;
+    padding: 10px;
+  }
+  .crafting {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    align-self: center;
+    font-size: small;
+    margin-left: -10px;
+  }
+  .tilepic {
+    background-image: url("./p_land_images/tileback.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 3px;
+  }
+  }
+  
