@@ -86,6 +86,7 @@
 
 }
 
+
 .infoUi2 {
   display: flex;
   background-image: url("./p_land_images/ui.png");
@@ -143,7 +144,48 @@
   text-align: left;
   overflow: hidden;
   bottom: 50px;
+  margin-bottom: 50px;
 
+}
+.columnForm {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  align-self: center;
+  margin: auto;
+  background-image: url("./p_land_images/ui.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: center;
+  background-position-y: center;
+  padding: 200px;
+}
+
+.columnForm > input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+  
+}
+.right {
+  position: absolute;
+  right: 40px;
+  color: black;
+  border: black;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px;
+}
+.left {
+  position: absolute;
+  left: 30px;
+  color: black;
+  border: black;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px;
 }
 .crafting {
   display: flex;
@@ -188,7 +230,11 @@
   flex-direction: row;
 }
 .title {
-  width: 100%;
+
+  display: flex;
+  position: absolute;
+  right: 40px;
+  top: 60px;
 }
 .rowOfThree {
   display: flex;
@@ -198,11 +244,34 @@
 
 .Main{
   text-align: center;
-  background: url("./p_land_images/main.gif");
+  background: url("./p_land_images/map.png");
   background-size: cover;
   background-repeat: no-repeat;
 
-  text-align: start;
+  text-align: center;
+  background-position-x: center;
+  background-position-y: center;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 0;
+  padding: 10px;
+  color: brown;
+  font-family: 'VCR';
+}
+.Main-Quests{
+  text-align: center;
+  background: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+  ),
+  url("map3-5.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  text-align: center;
   background-position-x: center;
   background-position-y: center;
   position: absolute;
@@ -215,6 +284,138 @@
   font-family: 'VCR';
 
 }
+button {
+  text-align: center;
+}
+
+.questCard {
+  border:rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.4);
+  outline: 2px solid black;
+  width: 50%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.questCard:hover {
+  box-shadow: 0 0 3px white;
+}
+.craftButton {
+  background: linear-gradient(40deg, #8006fc, #15bfd9);
+  background-color: rgba(0, 0, 0, 0.0);
+  padding: 15px;
+  color: cyan;
+  font-family: 'VCR';
+  font-size: x-large;
+  position: absolute;
+  right: 30px;
+  top: 350px;
+  width: 200px;
+  border-style: solid;
+  border-width: 3px;
+  border-color:black;
+  outline: 2px;
+  outline-style: solid;
+  outline-color: linear-gradient(40deg, #8006fc, #15bfd9);
+  border-radius: 0;
+
+}
+
+.craftButton2 {
+  background: linear-gradient(40deg, #8006fc, #15bfd9);
+  padding: 15px;
+  color: cyan;
+  font-family: 'VCR';
+  font-size: x-large;
+  position: absolute;
+  right: 30px;
+  top: 430px;
+  width: 200px;
+  border-style: solid;
+  border-width: 3px;
+  border-color:black;
+  outline: 2px;
+  outline-style: solid;
+  outline-color: linear-gradient(40deg, #8006fc, #15bfd9);
+  border-radius: 0;
+
+}
+.craftButton3 {
+  background: linear-gradient(40deg, #8006fc, #15bfd9);
+
+  padding: 15px;
+
+  color: cyan;
+  font-family: 'VCR';
+  font-size: x-large;
+  
+  position: absolute;
+  right: 30px;
+  top: 510px;
+  width: 200px;
+  border-style: solid;
+  border-width: 3px;
+  border-color:black;
+  outline: 2px;
+  outline-style: solid;
+  outline-color: linear-gradient(40deg, #8006fc, #15bfd9);
+  border-radius: 0;
+
+}
+.craftButton4 {
+  background: linear-gradient(40deg, #8006fc, #15bfd9);
+  padding: 15px;
+
+  color: cyan;
+  font-family: 'VCR';
+  font-size: medium;
+  
+  position: absolute;
+  right: 30px;
+  top: 590px;
+  width: 200px;
+  border-style: solid;
+  border-width: 3px;
+  border-color:black;
+  outline: 2px;
+  outline-style: solid;
+  outline-color: linear-gradient(40deg, #8006fc, #15bfd9);
+  border-radius: 0;
+
+}
+.lock{
+  position: absolute;
+  right: 250px;
+  top: 360px;
+}
+.lock2{
+  position: absolute;
+  right: 250px;
+  top: 520px;
+}
+.lock3{
+  position: absolute;
+  right:250px;
+  top: 600px;
+}
+
+
+.craftButton:hover {
+  box-shadow: 0 0 3px 5px white;
+  background: #282c34;
+}
+.craftButton2:hover {
+  box-shadow: 0 0 3px 5px white;
+  background: #282c34;
+}
+.craftButton3:hover {
+  box-shadow: 0 0 3px 5px white;
+  background: #282c34;
+}
+.craftButton4:hover {
+  box-shadow: 0 0 3px 5px white;
+  background: #282c34;
+}
 .InfoBox {
   text-align: left;
   color: greenyellow;
@@ -224,7 +425,32 @@
   border-style: solid;
   padding: 0;
 }
+.homePic {
+  height: 400px;
+  width: 230px;
+  left: 0;
+  bottom: 30px;
+  position: absolute;
+}
+.questPic {
+  height: 120px;
+  width: 290px;
+  right: 0;
+  top: 400px;
+  position: absolute;
+}
 
+.homePicCenter {
+  height: 200px;
+  width: 400px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  left: 260px;
+  bottom: 500px;
+ 
+
+}
 button{
   color: greenyellow;
   background-color: black;
@@ -317,11 +543,18 @@ button.shake{
   margin: auto;
 }
 .popupper{
-  background-image: url("./p_land_images/a1dd.png");
+  background-image: url("./p_land_images/a1f.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   color: black;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+.popupperBook{
+  color: black;
+  margin-bottom: 20px;
   padding: 20px;
   flex-direction: column;
   align-items: center;
@@ -341,6 +574,27 @@ button.shake{
   background-size: cover;
   background-position: center;
   display: flex;
+  padding: 5px;
+  text-align: center;
+  align-content: center;
+  align-self: center;
+  justify-self: center;
+  color: black;
+  font-family: 'VCR';
+  font-size: x-large;
+  margin: auto;
+  border-radius: 0;
+}
+.buyButton {
+  margin-top: 15px;
+}
+
+.buttonpicMenu {
+  background-image: url("./p_land_images/a1f.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
   padding: 15px;
   text-align: center;
   align-content: center;
@@ -350,9 +604,7 @@ button.shake{
   font-family: 'VCR';
   font-size: x-large;
   margin: auto;
-
-
-
+  width: 80px;
 }
 .tilepic:hover {
   box-shadow: 5px 5px 10px white;
@@ -385,10 +637,10 @@ p {
 body{
   background:
   linear-gradient(
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0.75)
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
   ),
-  url("map3-5.png");
+  url("./p_land_images/mp background.png");
   display: flex;
 
   background-repeat: no-repeat;
@@ -397,7 +649,27 @@ body{
   background-position-y: center;
   flex-direction: column;
   overflow:hidden;
+  text-align:center;
  
+}
+.Main-Character{
+  text-align: center;
+  background: url("./p_land_images/main.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  text-align: center;
+  background-position-x: center;
+  background-position-y: center;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 0;
+  padding: 0;
+  color: brown;
+  font-family: 'VCR';
+
 }
 
 .HeaderBar {
@@ -406,9 +678,11 @@ body{
   justify-content: space-between;
   text-align: center;
   align-items: center;
+  align-self: center;
   padding-top: 0;
   margin-top: 0;
   margin-bottom: -5px;
+  width: 100%;
 }
 
 
@@ -424,6 +698,13 @@ body{
     align-items: center;
     align-self: center;
   }
+  .title {
+    width: 80%;
+    align-self: center;
+    justify-self: center;
+    text-align: justify;
+    margin: auto;
+  }
   .column {
     display: flex;
     align-self: center;
@@ -431,6 +712,18 @@ body{
     margin: auto;
     padding: 5px;
     
+  }
+  .HeaderBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: -150px;
+    width: 100%;
   }
   .popupper{
     background-image: url("./p_land_images/a1dd.png");
@@ -486,9 +779,30 @@ body{
     width: 100%;
     color: brown;
     overflow: auto;
-
-  
    
+  }
+  .Main{
+    text-align: center;
+    background: url("./p_land_images/map.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    background-position-x: center;
+    background-position-y: center;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 4px;
+    color: brown;
+    font-family: 'VCR';
+  
   }
 
   input {
@@ -586,6 +900,7 @@ body{
   
   }
   
+  
 
   .infoUi {
     height: 30px;
@@ -615,19 +930,8 @@ body{
     height: 20px;
     width: 20px;
   }
-  .HeaderBar {
-    display: flex;
-    flex-direction: row;
+
   
-    text-align: start;
-    align-items: center;
-    margin-top: 0;
-    margin: auto;
-    padding: 0;
-    padding-top: 0;
-    position: fixed;
-    align-self: center;
-  }
   .headerRow {
     margin-top: 15px;
     margin-bottom: 25px;
@@ -711,5 +1015,87 @@ body{
     background-size: cover;
     margin: 3px;
   }
+  .craftButton-mobile {
+    background: linear-gradient(40deg, #8006fc, #15bfd9);
+    background-color: rgba(0, 0, 0, 0.0);
+    padding: 15px;
+    color: cyan;
+    margin-top: 3px;
+    margin-bottom: 3px;
+   
+    text-align: center;
+    width: 60%;
+    font-family: 'VCR';
+    font-size: large;
+    border-style: solid;
+    border-width: 3px;
+    border-color:black;
+    outline: 2px;
+    outline-style: solid;
+    outline-color: linear-gradient(40deg, #8006fc, #15bfd9);
+    border-radius: 0;
+  
+  }
+  .Main-Quests{
+    text-align: center;
+    background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("map3-5.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-position-x: center;
+    background-position-y: center;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    color: brown;
+    font-family: 'VCR';
+  
+  }
+
+  .lockMobile {
+    height: 20px;
+    width: 20px;   
+    margin-right: 8px;
+  }
+  .rowMain {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-right: 28px;
+  }
+
+  
+  .Main-Character{
+    text-align: center;
+    background: url("./p_land_images/main.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+    text-align: center;
+    background-position-x: center;
+    background-position-y: center;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+    color: brown;
+    font-family: 'VCR';
+  
+  }
+
   }
   
