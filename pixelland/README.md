@@ -1,4 +1,4 @@
-# Basic Sample Hardhat Project
+# Pixelland Unit Tests
 
 This project demonstrates the goals and effective solidity code for Pixelland.
 Try running some of the following tasks:
