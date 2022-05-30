@@ -54,9 +54,11 @@ function Home() {
                <Link to='marketplace'  style={{color: 'cyan', textDecoration: 'none'}}>
                <button component={Link} className='craftButton2' type='button'> Marketplace </button>
              </Link>
-               <img className='lock3' src='lock.png'/>
                <Link to='character'  style={{color: 'cyan', textDecoration: 'none'}}>
                <button className='craftButton4' type='button'>Create Character </button>
+               </Link>
+               <Link to='test'  style={{color: 'cyan', textDecoration: 'none'}}>
+               <button className='craftButton5' type='button'>Test Page </button>
                </Link>
             </div>
             </div>       
