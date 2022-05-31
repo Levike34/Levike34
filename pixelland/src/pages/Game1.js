@@ -145,7 +145,7 @@ function Game1() {
  <Link to='/' style={{textDecoration: 'none'}}>
      <button className='buttonpic' type='button'>Home</button>
  </Link>
- <div class="frame">
+ <div class="game">
     <div class="corner_topleft"></div>
     <div class="corner_topright"></div>
     <div class="corner_bottomleft"></div>

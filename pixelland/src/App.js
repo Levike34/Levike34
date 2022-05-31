@@ -1,6 +1,7 @@
 import QuestPage from "./pages/QuestPage";
 import Game1 from "./pages/Game1";
 import Game2 from "./pages/Game2";
+import Group1 from "./components/Title";
 import Home from "./pages/Home";
 import MobilePage from "./pages/MobilePage";
 import MarketPage from "./pages/MarketPage";
@@ -39,7 +40,7 @@ if(isMobile) {
 } else {
   return(
     <Routes>
-      <Route path="/" element={ <Home/> } />
+      <Route path="/" element={ <Group1/> } />
       <Route path="quests" element={ <QuestPage/> } />
       <Route path="marketplace" element={ <MarketPage/> } />
       <Route path="character" element={ <CharacterPage/> } />

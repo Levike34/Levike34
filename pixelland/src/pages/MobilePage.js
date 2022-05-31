@@ -744,7 +744,7 @@ useEffect(() => {
             <div className='Main'>
         
           
-              <img className='title' src='title.png' />
+              <img className='titleNew' src='title.png' />
            
 
             {quest ?  
