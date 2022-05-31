@@ -1,9 +1,10 @@
 import QuestPage from "./pages/QuestPage";
+import Game1 from "./pages/Game1";
+import Game2 from "./pages/Game2";
 import Home from "./pages/Home";
 import MobilePage from "./pages/MobilePage";
 import MarketPage from "./pages/MarketPage";
 import CharacterPage from "./pages/CharacterPage";
-import Group1 from "./components/components/Title";
 import React, { useState, useHook, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import './App.css';
@@ -42,7 +43,8 @@ if(isMobile) {
       <Route path="quests" element={ <QuestPage/> } />
       <Route path="marketplace" element={ <MarketPage/> } />
       <Route path="character" element={ <CharacterPage/> } />
-      <Route path="test" element={ <Group1/> } />
+      <Route path="game1" element={ <Game1/> } />
+      <Route path="game1/game2" element={ <Game2/> } />
    
     </Routes>
   )

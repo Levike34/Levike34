@@ -44,9 +44,9 @@ function Home() {
                
              </div>
              <div className='column'>
-               <img className='lock' src='lock.png'/>
+             <Link to='game1'  style={{color: 'cyan', textDecoration: 'none'}}>
                <button className='craftButton' type='button'>Play </button>
-            
+               </Link>
               <Link to='quests'  style={{color: 'cyan', textDecoration: 'none'}}>
                <button component={Link} className='craftButton3' type='button'> Quests </button>
              </Link>
@@ -57,9 +57,7 @@ function Home() {
                <Link to='character'  style={{color: 'cyan', textDecoration: 'none'}}>
                <button className='craftButton4' type='button'>Create Character </button>
                </Link>
-               <Link to='test'  style={{color: 'cyan', textDecoration: 'none'}}>
-               <button className='craftButton5' type='button'>Test Page </button>
-               </Link>
+               
             </div>
             </div>       
         </div>

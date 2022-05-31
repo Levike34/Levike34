@@ -1,6 +1,4 @@
 import React, { useState, useHook, useEffect } from "react";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 
