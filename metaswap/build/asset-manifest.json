@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/static/css/main.0b30aec0.chunk.css",
+    "main.js": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/static/js/main.7a08974c.chunk.js",
+    "main.js.map": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/static/js/main.7a08974c.chunk.js.map",
+    "runtime-main.js": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/static/js/runtime-main.4c554b87.js",
+    "runtime-main.js.map": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/static/js/runtime-main.4c554b87.js.map",
+    "static/js/2.aa01d6d7.chunk.js": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/static/js/2.aa01d6d7.chunk.js",
+    "static/js/2.aa01d6d7.chunk.js.map": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/static/js/2.aa01d6d7.chunk.js.map",
+    "index.html": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/index.html",
+    "precache-manifest.a3001ddb3bc145472a4e25dc5a70458b.js": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/precache-manifest.a3001ddb3bc145472a4e25dc5a70458b.js",
+    "service-worker.js": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/service-worker.js",
+    "static/css/main.0b30aec0.chunk.css.map": "/home2/iyeszdmy/public_html/vrmetaengine/wp-content/reactpress/apps/metaswap/static/css/main.0b30aec0.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4c554b87.js",
+    "static/js/2.aa01d6d7.chunk.js",
+    "static/css/main.0b30aec0.chunk.css",
+    "static/js/main.7a08974c.chunk.js"
+  ]
+}
